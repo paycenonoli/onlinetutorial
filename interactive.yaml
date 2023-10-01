@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  vars_prompt:
+   - name: pkgtoinstall
+     prompt: Install which package?
+     default: telnet
+  tasks:
+   - name: ensure apache is installed
+     apt:
+      pkg={{ pkgtoinstall }}
+      state=latest
