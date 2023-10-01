@@ -1,0 +1,13 @@
+---
+- name: Create a user on the agent
+  hosts: webservers
+  tasks:
+   - name: create a user on agent
+     user:
+      name: user3
+      comment: "user1 comment"
+      uid: 1040
+      groups: admin1,user1 
+      password: $1$LDF2.sZ6$jNiDB9vlAhl6m7TltRzmC0
+      shell: "/bin/bash" 
+     

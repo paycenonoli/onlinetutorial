@@ -1,0 +1,7 @@
+---
+- hosts: webservers
+  tasks:
+   - name: create a dummy file
+     command: touch /tmp/dummy0
+     run_once: true
+

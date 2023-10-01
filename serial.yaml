@@ -1,0 +1,7 @@
+---
+- name: Execute serial operation
+  hosts: webservers
+  serial: 1
+  tasks:
+   - name: sleep for 5 seconds
+     shell: /bin/sleep 5

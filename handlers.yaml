@@ -1,0 +1,26 @@
+---
+- name: install apache2 on agents
+  hosts: webservers
+  become: yes
+  tasks:
+   - name: install apache on agents
+     apt:
+      name: apache2
+      state: present
+      update_cache: yes
+   - name: start apache2 on agent
+     service:
+      name: apache2
+      state: started
+   - name: copy the template
+     copy:
+      src: /home/ubuntu/playbooks/index.html
+      dest: /var/www/html/index.html
+     notify:
+       - restart apache2
+  handlers:
+    - name: restart apache2
+      service: 
+       name: apache2
+       state: restarted 
+   
